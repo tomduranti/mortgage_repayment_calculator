@@ -1,0 +1,64 @@
+@use '../../../sass/abstract/variables' as *;
+@use '../../../sass/abstract/mixins' as *;
+@use '../../../sass/abstract/utils' as *;
+
+.input_number {
+    border: 1px solid $border_slate--500;
+
+    border-radius: $radius_pill_xs;
+
+    display: flex;
+
+    inline-size: 100%;
+
+    overflow: hidden;
+
+    &:focus {
+        border-color: $border_slate--900;
+    }
+
+    &:active {
+        border-color: $border_lime;
+
+        .input_number__prefix {
+            background-color: $background_color_lime;
+
+            color: $text_slate--900;
+        }
+    }
+
+    &--error {
+        border-color: $border_red;
+    }
+
+    &__prefix {
+        background-color: $background_color_slate--100;
+
+        color: $text_slate--700;
+
+        display: inline-block;
+
+        padding: $padding_block_control_md--plus_half $padding_inline_control_lg;
+
+        &--error {
+            background-color: $background_color_red;
+
+            color: $text_red;
+        }
+    }
+
+
+    &__input {
+        inline-size: 100%;
+
+        text-indent: $margin_inlinestart_component_lg;
+    }
+}
+
+.label {
+    display: inline-block;
+
+    color: $text_slate--700;
+
+    margin-block-end: $margin_blockend_component_md;
+}

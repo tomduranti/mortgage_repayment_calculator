@@ -50,11 +50,16 @@ $background_color_lime: $lime;
 $background_color_slate--900: $slate--900;
 $background_color_slate--500: $slate--500;
 $background_color_slate--100: $slate--100;
+$background_color_red: $red;
 
+$border_slate--900: $slate--900;
 $border_slate--500: $slate--500;
+$border_lime: $lime;
+$border_red: $red;
 
 $text_slate--900: $slate--900;
 $text_slate--700: $slate--700;
+$text_red: $red;
 
 //SPACING
 //Gap
@@ -70,6 +75,7 @@ $gap_inline_control_lg: map.get($spacing, 16);
 //Padding & margin
 // $padding_full_control_md: map.get($spacing, 24);
 $padding_block_control_md: map.get($spacing, 12);
+$padding_block_control_md--plus_half: calc(map.get($spacing, 12) + map.get($special_spacing, 1) / 2);
 $padding_block_control_lg: map.get($spacing, 16);
 // $padding_block_control_md: map.get($spacing, 16);
 // $padding_block_control_lg: map.get($spacing, 24);
@@ -88,6 +94,7 @@ $margin_inlineend_component_md: map.get($spacing, 12);
 // $margin_block_component_md: calc(map.get($spacing, 32) + map.get($spacing, 4) + map.get($special_spacing, 2));
 
 $margin_blockend_component_sm: map.get($spacing, 8);
+$margin_blockend_component_md: map.get($spacing, 12);
 $margin_blockend_component_lg: map.get($spacing, 16);
 // $margin_blockend_component_md: map.get($spacing, 24);
 // $margin_blockend_component_lg: map.get($spacing, 32);
