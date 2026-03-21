@@ -1,0 +1,68 @@
+@use '../../../sass/abstract/variables' as *;
+@use '../../../sass/abstract/mixins' as *;
+@use '../../../sass/abstract/utils' as *;
+@use 'sass:color';
+
+.input_radio {
+    border: 1px solid $border_slate--500;
+
+    border-radius: $radius_pill_xs;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: $gap_inline_control_lg;
+
+    inline-size: 100%;
+
+    @include transition(border-color, .3s, ease);
+
+    padding: $padding_block_control_md--plus_half $padding_inline_control_lg;
+
+    &:focus-visible,
+    &:hover,
+    &:has(input:checked) {
+        border-color: $border_lime;
+    }
+
+    &:has(input:checked) {
+        background-color: color.adjust($background_color_lime, $lightness: 45%);
+    }
+
+    &__label {
+        color: $text_slate--900;
+    }
+
+
+    &__radio {
+        inline-size: 19.5px;
+        block-size: 19.5px;
+
+        cursor: inherit;
+
+        border: 2px solid $border_slate--700;
+        border-radius: 50%;
+
+        display: grid;
+        place-content: center;
+
+        &::before {
+            content: "";
+            inline-size: 10.5px;
+            block-size: 10.5px;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: .1s transform ease-in-out;
+            background-color: $background_color_lime;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+
+        &:checked {
+            border-color: $border_lime;
+        }
+    }
+}

@@ -12,10 +12,12 @@
     inline-size: 100%;
 
     overflow: hidden;
+    
 
-    &:focus {
+    &:hover {
         border-color: $border_slate--900;
     }
+
 
     &:active {
         border-color: $border_lime;
@@ -27,9 +29,11 @@
         }
     }
 
+
     &--error {
         border-color: $border_red;
     }
+
 
     &__prefix {
         background-color: $background_color_slate--100;
@@ -50,6 +54,8 @@
 
     &__input {
         inline-size: 100%;
+
+        cursor: pointer;
 
         text-indent: $margin_inlinestart_component_lg;
     }
