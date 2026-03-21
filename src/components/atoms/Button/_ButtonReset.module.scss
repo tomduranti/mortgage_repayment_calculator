@@ -1,0 +1,12 @@
+@use '../../../sass/abstract/variables' as *;
+@use '../../../sass/abstract/mixins' as *;
+
+.button_reset {
+    color: $text_slate--900;
+
+    @include transition(color, .3s, ease);
+
+    &:hover {
+        color: $text_slate--700;
+    }
+}

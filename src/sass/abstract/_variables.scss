@@ -46,69 +46,70 @@ $special_spacing: (
 */
 
 //COLORS
-$background_color_white: $white;
-$background_color_red: $red;
-$background_color_rose: $rose--50;
-$border_color_red: $red;
-$border_color_rose--400: $rose--400;
-$border_color_rose--100: $rose--100;
+$background_color_lime: $lime;
+$background_color_slate--900: $slate--900;
+$background_color_slate--500: $slate--500;
+$background_color_slate--100: $slate--100;
 
-$outline_color_red: $red;
+$border_slate--500: $slate--500;
 
-$text_red: $red;
-$text_white: $white;
-$text_rose--500: $rose--500;
-$text_rose--900: $rose--900;
+$text_slate--900: $slate--900;
+$text_slate--700: $slate--700;
 
 //SPACING
 //Gap
 $gap_inline_control_sm: map.get($spacing, 8);
-$gap_inline_control_md: map.get($spacing, 16);
-$gap_inline_control_lg: map.get($spacing, 24);
-$gap_block_control_sm: map.get($spacing, 8);
-$gap_block_control_md: map.get($spacing, 16);
-$gap_block_control_lg: map.get($spacing, 24);
-$gap_block_control_xlg: map.get($spacing, 32);
+$gap_inline_control_md: map.get($spacing, 12);
+$gap_inline_control_lg: map.get($spacing, 16);
+// $gap_inline_control_lg: map.get($spacing, 24);
+// $gap_block_control_sm: map.get($spacing, 8);
+// $gap_block_control_md: map.get($spacing, 16);
+// $gap_block_control_lg: map.get($spacing, 24);
+// $gap_block_control_xlg: map.get($spacing, 32);
 
 //Padding & margin
-$padding_full_control_md: map.get($spacing, 24);
-$padding_block_control_sm: map.get($spacing, 12);
-$padding_block_control_md: map.get($spacing, 16);
-$padding_block_control_lg: map.get($spacing, 24);
-$padding_block_layout_sm: map.get($spacing, 24);
-$padding_block_layout_md: map.get($spacing, 40);
-$padding_block_layout_lg: map.get($spacing, 88);
-$padding_inline_control_sm: map.get($spacing, 12);
-$padding_inline_control_md: map.get($spacing, 24);
-$padding_inline_control_lg: calc(map.get($spacing, 24) + map.get($spacing, 4));
+// $padding_full_control_md: map.get($spacing, 24);
+$padding_block_control_md: map.get($spacing, 12);
+$padding_block_control_lg: map.get($spacing, 16);
+// $padding_block_control_md: map.get($spacing, 16);
+// $padding_block_control_lg: map.get($spacing, 24);
+// $padding_block_layout_sm: map.get($spacing, 24);
+// $padding_block_layout_md: map.get($spacing, 40);
+// $padding_block_layout_lg: map.get($spacing, 88);
+// $padding_inline_control_sm: map.get($spacing, 8);
+$padding_inline_control_lg: map.get($spacing, 16);
+// $padding_inline_control_lg: calc(map.get($spacing, 24) + map.get($spacing, 4));
 
-$margin_block_component_xs: map.get($spacing, 16);
-$margin_block_component_sm: map.get($spacing, 24);
-$margin_block_component_md: calc(map.get($spacing, 32) + map.get($spacing, 4) + map.get($special_spacing, 2));
-$margin_blockstart_component_sm: map.get($spacing, 16);
-$margin_blockend_component_xs: map.get($spacing, 8);
-$margin_blockend_component_md: map.get($spacing, 24);
-$margin_blockend_component_lg: map.get($spacing, 32);
-$margin_inline_layout_lg: calc(map.get($spacing, 88) + map.get($spacing, 24));
+$margin_inlinestart_component_lg: map.get($spacing, 16);
+$margin_inlineend_component_md: map.get($spacing, 12);
+
+// $margin_block_component_xs: map.get($spacing, 16);
+// $margin_block_component_sm: map.get($spacing, 24);
+// $margin_block_component_md: calc(map.get($spacing, 32) + map.get($spacing, 4) + map.get($special_spacing, 2));
+
+$margin_blockend_component_sm: map.get($spacing, 8);
+$margin_blockend_component_lg: map.get($spacing, 16);
+// $margin_blockend_component_md: map.get($spacing, 24);
+// $margin_blockend_component_lg: map.get($spacing, 32);
+
 
 //Inline/Block size
-$inlinesize_control_xs: calc(map.get($spacing, 12) + map.get($spacing, 8) + map.get($special_spacing, 1));
-$inlinesize_control_sm: calc(map.get($spacing, 40) * 4);
-$blocksize_control_button: calc(map.get($spacing, 40) + map.get($spacing, 4));
-$blocksize_control_sm: calc(map.get($spacing, 40) * 5 + map.get($spacing, 12));
-$blocksize_control_lg: calc(map.get($spacing, 40) * 5 + map.get($spacing, 40));
+$inlinesize_control_sm: calc(map.get($spacing, 40) * 8 - map.get($special_spacing, 4) - map.get($special_spacing, 2));
+$inlinesize_layout_md: 89.58%;
+$inlinesize_layout_lg: 70%;
+// $blocksize_control_button: calc(map.get($spacing, 40) + map.get($spacing, 4));
+// $blocksize_control_sm: calc(map.get($spacing, 40) * 5 + map.get($spacing, 12));
+// $blocksize_control_lg: calc(map.get($spacing, 40) * 5 + map.get($spacing, 40));
 
 //Container
-$container_inline_layout_xs: 41.11%;
-$container_inline_layout_sm: 55.57%;
-$container_inline_layout_md: 87.2%;
-$container_inline_layout_lg: 89.58%;
+// $container_inline_layout_xs: 41.11%;
+$container_inline_layout_sm: 84.12%;
+$container_inline_layout_sm: 87.2%;
+$container_inline_layout_md: 88.37%;
 
 //Radius
 $radius_pill_xs: to_rem(4);
-$radius_pill_sm: to_rem(8);
-$radius_pill_md: to_rem(12);
+// $radius_pill_sm: to_rem(8);
+// $radius_pill_md: to_rem(12);
 $radius_pill_lg: to_rem(32);
-
-//Outline
-$outline_component_sm: map.get($special_spacing, 2);
+$radius_pill_xxlg: to_rem(80);

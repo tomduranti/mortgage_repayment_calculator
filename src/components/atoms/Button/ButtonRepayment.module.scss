@@ -1,0 +1,29 @@
+@use '../../../sass/abstract/variables' as *;
+@use '../../../sass/abstract/mixins' as *;
+@use '../../../sass/abstract/utils' as *;
+@use 'sass:color';
+
+.button_repayment {
+    @extend %flex_center;
+    gap: $gap_inline_control_md;
+
+    background-color: $background_color_lime;
+
+    border-radius: $radius_pill_lg;
+
+    color: $text_slate--900;
+
+    inline-size: 100%;
+
+    padding: $padding_block_control_lg;
+
+    @include transition(background-color, .3s, ease);
+
+    &:hover {
+        background-color: color.adjust($background_color_lime, $lightness: 23%);
+    }
+
+    @include respond_to(min, m_screen) {
+        max-inline-size: $inlinesize_control_sm;
+    }
+}
