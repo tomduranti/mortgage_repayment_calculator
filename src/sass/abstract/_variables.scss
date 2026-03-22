@@ -72,7 +72,7 @@ $gap_block_control_xlg: map.get($spacing, 24);
 $gap_block_control_xxlg: map.get($spacing, 40);
 
 //Padding & margin
-// $padding_full_control_md: map.get($spacing, 24);
+$padding_full_component_lg: map.get($spacing, 40);
 $padding_block_control_md: map.get($spacing, 12);
 $padding_block_control_md--plus_half: calc(map.get($spacing, 12) + map.get($special_spacing, 1) / 2);
 $padding_block_control_lg: map.get($spacing, 16);
@@ -86,7 +86,7 @@ $padding_block_layout_lg: map.get($spacing, 40);
 // $padding_block_layout_lg: map.get($spacing, 88);
 // $padding_inline_control_sm: map.get($spacing, 8);
 $padding_inline_control_lg: map.get($spacing, 16);
-// $padding_inline_control_lg: calc(map.get($spacing, 24) + map.get($spacing, 4));
+$padding_inline_component_md: map.get($spacing, 24);
 
 $margin_inlinestart_component_lg: map.get($spacing, 16);
 $margin_inlineend_component_md: map.get($spacing, 12);
@@ -107,6 +107,7 @@ $margin_blockstart_component_lg: map.get($spacing, 16);
 $inlinesize_control_sm: calc(map.get($spacing, 40) * 8 - map.get($special_spacing, 4) - map.get($special_spacing, 2));
 $inlinesize_layout_md: 89.58%;
 $inlinesize_layout_lg: 70%;
+$inlinesize_layout_xlg: 50%;
 // $blocksize_control_button: calc(map.get($spacing, 40) + map.get($spacing, 4));
 // $blocksize_control_sm: calc(map.get($spacing, 40) * 5 + map.get($spacing, 12));
 // $blocksize_control_lg: calc(map.get($spacing, 40) * 5 + map.get($spacing, 40));

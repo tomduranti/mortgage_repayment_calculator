@@ -16,9 +16,6 @@
 
 .mortgage_repayment {
     @extend %flex_column;
-    gap: $gap_block_control_xxlg;
-
-    padding-block-start: $padding_block_layout_md;
 
     overflow: hidden;
 
@@ -28,8 +25,13 @@
         border-radius: $radius_pill_md;
 
         max-inline-size: $inlinesize_layout_md;
+    }
 
-        padding-block-start: $padding_block_layout_lg;
+
+    @include respond_to(min, l_screen) {
+        flex-direction: row;
+
+        max-inline-size: $inlinesize_layout_lg;
     }
 
 
@@ -39,8 +41,17 @@
 
         inline-size: 100%;
 
+        padding: $padding_block_component_md $padding_inline_component_md;
+
         @include respond_to(min, m_screen) {
             gap: $gap_block_control_xxlg;
+
+            padding: $padding_full_component_lg;
+        }
+
+
+        @include respond_to(min, l_screen) {
+            max-inline-size: $inlinesize_layout_xlg;
         }
     }
     
@@ -62,7 +73,6 @@
 
         @include respond_to(min, m_screen) {
             grid-template-columns: repeat(2, 1fr);
-            // grid-template-rows: repeat(3, 1fr);
 
             & div:first-child,
             & div:last-child {
@@ -74,19 +84,31 @@
 
     &__result {
         background-color: $background_color_slate--900;
+
+        inline-size: 100%;
+
+        padding: $padding_block_component_md $padding_inline_component_md;
+
+        @include respond_to(min, m_screen) {
+            padding: $padding_full_component_lg;
+        }
+
+        @include respond_to(min, l_screen) {
+            border-bottom-left-radius: $radius_pill_xxlg;
+
+            place-content: center;
+        }
     }
 
 
     &__container {
         @extend %flex_column;
         gap: $gap_block_control_lg;
-        
-        padding-block: $padding_block_component_md;
 
         text-align: center;
 
-        @include respond_to(min, m_screen) {
-            padding-block: $padding_block_component_lg;
+        & > p {
+            max-inline-size: 45ch; //char limitation just to match design
         }
     }
 
@@ -96,16 +118,5 @@
 
         inline-size: 192px;
         block-size: 192px;
-    }
-}
-
-
-.container {
-    margin-inline: auto;
-
-    max-inline-size: $container_inline_layout_md;
-
-    @include respond_to(min, m_screen) {
-        max-inline-size: $container_inline_layout_lg;
     }
 }
