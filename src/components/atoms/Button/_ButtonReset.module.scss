@@ -2,14 +2,12 @@
 @use '../../../sass/abstract/mixins' as *;
 
 .button_reset {
-    color: $text_slate--900;
-
     text-align: start;
 
     @include transition(color, .3s, ease);
 
     &:hover,
     &:focus-visible {
-        color: $text_slate--700;
+        color: $slate--700;
     }
 }

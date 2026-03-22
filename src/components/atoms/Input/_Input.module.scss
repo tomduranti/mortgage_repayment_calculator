@@ -26,7 +26,7 @@
         .input_number__prefix {
             background-color: $background_color_lime;
 
-            color: $text_slate--900;
+            color: $slate--900;
         }
     }
 
@@ -39,8 +39,6 @@
     &__prefix {
         background-color: $background_color_slate--100;
 
-        color: $text_slate--700;
-
         display: inline-block;
 
         padding: $padding_block_control_md--plus_half $padding_inline_control_lg;
@@ -48,7 +46,7 @@
         &--error {
             background-color: $background_color_red;
 
-            color: $text_red;
+            color: $red;
         }
     }
 
@@ -64,8 +62,6 @@
 
 .label {
     display: inline-block;
-
-    color: $text_slate--700;
 
     margin-block-end: $margin_blockend_component_md;
 }

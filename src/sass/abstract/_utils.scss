@@ -1,3 +1,6 @@
+@use './variables.scss' as *;
+
+//Flex classes
 %flex_center {
     display: flex;
     justify-content: center;
@@ -9,6 +12,11 @@
     flex-direction: column;
 }
 
+.flex_order_right {
+    order: 2;
+}
+
+//Text classes
 .text_capitalize {
     text-transform: capitalize;
 }
@@ -17,6 +25,18 @@
     text-decoration: underline;
 }
 
-.flex_order_right {
-    order: 2;
+.text_slate--900 {
+    color: $slate--900;
+}
+
+.text_slate--700 {
+    color: $slate--700;
+}
+
+.text_slate--300 {
+    color: $slate--300;
+}
+
+.text_white {
+    color: $white;
 }
