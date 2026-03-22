@@ -8,14 +8,49 @@
 
     padding-block-start: $padding_block_layout_md;
 
+
     &__calculator {
         @extend %flex_column;
         gap: $gap_block_control_lg;
     }
+    
 
     &__title {
         @extend %flex_column;
         gap: $gap_block_control_sm;
+    }
+
+
+    &__result {
+        background-color: $background_color_slate--900;
+    }
+
+
+    &__container {
+        @extend %flex_column;
+        gap: $gap_block_control_lg;
+        
+        padding-block: $padding_block_component_md;
+
+        text-align: center;
+    }
+
+
+    &__icon {
+        align-self: center;
+
+        inline-size: 192px;
+        block-size: 192px;
+    }
+
+
+    &__empty_text {
+        color: $text_white;
+    }
+
+
+    &__paragraph {
+        color: $text_slate--300;
     }
 }
 
