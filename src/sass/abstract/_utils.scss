@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+%flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
 .text_capitalize {
     text-transform: capitalize;
 }

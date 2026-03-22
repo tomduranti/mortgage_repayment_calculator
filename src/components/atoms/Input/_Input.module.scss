@@ -2,7 +2,7 @@
 @use '../../../sass/abstract/mixins' as *;
 
 .input_number {
-    border: 1px solid $border_slate--500;
+    outline: 1px solid $border_slate--500;
 
     border-radius: $radius_pill_xs;
 
@@ -11,15 +11,17 @@
     inline-size: 100%;
 
     overflow: hidden;
-    
 
     &:hover {
-        border-color: $border_slate--900;
+        outline-color: $border_slate--900;
     }
 
+    &:has(:focus-visible) {
+        outline-color: $border_slate--900;
+    }
 
-    &:active {
-        border-color: $border_lime;
+    &:has(:required:valid) {
+        outline-color: $border_lime;
 
         .input_number__prefix {
             background-color: $background_color_lime;
@@ -30,7 +32,7 @@
 
 
     &--error {
-        border-color: $border_red;
+        outline-color: $border_red;
     }
 
 

@@ -20,7 +20,6 @@
 
     padding: $padding_block_control_md--plus_half $padding_inline_control_lg;
 
-    &:focus-visible,
     &:hover,
     &:has(input:checked) {
         border-color: $border_lime;
@@ -28,6 +27,10 @@
 
     &:has(input:checked) {
         background-color: color.adjust($background_color_lime, $lightness: 45%);
+    }
+
+    &:has(:focus-visible) {
+        border-color: $border_lime;
     }
 
     &__label {

@@ -68,11 +68,11 @@ $gap_inline_control_sm: map.get($spacing, 8);
 $gap_inline_control_md: map.get($spacing, 12);
 $gap_inline_control_lg: map.get($spacing, 16);
 // $gap_inline_control_lg: map.get($spacing, 24);
-// $gap_block_control_sm: map.get($spacing, 8);
+$gap_block_control_sm: map.get($spacing, 8);
 $gap_block_control_md: map.get($spacing, 12);
 // $gap_block_control_md: map.get($spacing, 16);
-// $gap_block_control_lg: map.get($spacing, 24);
-// $gap_block_control_xlg: map.get($spacing, 32);
+$gap_block_control_lg: map.get($spacing, 24);
+$gap_block_control_xlg: map.get($spacing, 32);
 
 //Padding & margin
 // $padding_full_control_md: map.get($spacing, 24);
@@ -82,7 +82,7 @@ $padding_block_control_lg: map.get($spacing, 16);
 // $padding_block_control_md: map.get($spacing, 16);
 // $padding_block_control_lg: map.get($spacing, 24);
 // $padding_block_layout_sm: map.get($spacing, 24);
-// $padding_block_layout_md: map.get($spacing, 40);
+$padding_block_layout_md: map.get($spacing, 32);
 // $padding_block_layout_lg: map.get($spacing, 88);
 // $padding_inline_control_sm: map.get($spacing, 8);
 $padding_inline_control_lg: map.get($spacing, 16);
@@ -113,8 +113,8 @@ $inlinesize_layout_lg: 70%;
 //Container
 // $container_inline_layout_xs: 41.11%;
 $container_inline_layout_sm: 84.12%;
-$container_inline_layout_sm: 87.2%;
-$container_inline_layout_md: 88.37%;
+$container_inline_layout_md: 87.2%;
+$container_inline_layout_lg: 88.37%;
 
 //Radius
 $radius_pill_xs: to_rem(4);

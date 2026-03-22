@@ -1,0 +1,27 @@
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/utils' as *;
+
+.mortgage_repayment {
+    @extend %flex_column;
+    gap: $gap_block_control_xlg;
+
+    padding-block-start: $padding_block_layout_md;
+
+    &__calculator {
+        @extend %flex_column;
+        gap: $gap_block_control_lg;
+    }
+
+    &__title {
+        @extend %flex_column;
+        gap: $gap_block_control_sm;
+    }
+}
+
+
+.container {
+    margin-inline: auto;
+
+    max-inline-size: $container_inline_layout_md;
+}
