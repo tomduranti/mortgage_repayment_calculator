@@ -1,4 +1,4 @@
-import style from './ButtonRepayment.module.scss';
+import style from './_ButtonRepayment.module.scss';
 import '../../../sass/abstract/_utils.scss';
 import calculatorImg from '../../../assets/icon_calculator.svg'
 

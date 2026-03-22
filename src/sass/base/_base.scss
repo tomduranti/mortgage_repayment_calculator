@@ -2,22 +2,73 @@
 @use '../abstract/mixins' as *;
 @use '../abstract/utils' as *;
 
+.page_wrapper {
+    //the following code is to display the app as fully centered
+    @include respond_to(min, m_screen) {
+        display: grid;
+        place-items: center;
+
+        background-color: $background_color_slate--100;
+
+        min-block-size: 100vh;
+    }
+}
+
 .mortgage_repayment {
     @extend %flex_column;
-    gap: $gap_block_control_xlg;
+    gap: $gap_block_control_xxlg;
 
     padding-block-start: $padding_block_layout_md;
+
+    overflow: hidden;
+
+    @include respond_to(min, m_screen) {
+        background-color: $background_color_white;
+
+        border-radius: $radius_pill_md;
+
+        max-inline-size: $inlinesize_layout_md;
+
+        padding-block-start: $padding_block_layout_lg;
+    }
 
 
     &__calculator {
         @extend %flex_column;
-        gap: $gap_block_control_lg;
+        gap: $gap_block_control_xlg;
+
+        inline-size: 100%;
+
+        @include respond_to(min, m_screen) {
+            gap: $gap_block_control_xxlg;
+        }
     }
     
 
     &__title {
         @extend %flex_column;
         gap: $gap_block_control_sm;
+
+        @include respond_to(min, m_screen) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+
+    &__input_group {
+        display: grid;
+        gap: $gap_block_control_xlg;
+
+        @include respond_to(min, m_screen) {
+            grid-template-columns: repeat(2, 1fr);
+            // grid-template-rows: repeat(3, 1fr);
+
+            & div:first-child,
+            & div:last-child {
+                grid-column: span 2 / span 2;
+            }
+        }
     }
 
 
@@ -33,6 +84,10 @@
         padding-block: $padding_block_component_md;
 
         text-align: center;
+
+        @include respond_to(min, m_screen) {
+            padding-block: $padding_block_component_lg;
+        }
     }
 
 
@@ -49,4 +104,8 @@
     margin-inline: auto;
 
     max-inline-size: $container_inline_layout_md;
+
+    @include respond_to(min, m_screen) {
+        max-inline-size: $container_inline_layout_lg;
+    }
 }
