@@ -67,21 +67,6 @@
     }
 
 
-    &__input_group {
-        display: grid;
-        gap: $gap_block_control_xlg;
-
-        @include respond_to(min, m_screen) {
-            grid-template-columns: repeat(2, 1fr);
-
-            & div:first-child,
-            & div:last-child {
-                grid-column: span 2 / span 2;
-            }
-        }
-    }
-
-
     &__result {
         background-color: $background_color_slate--900;
 
@@ -103,6 +88,7 @@
 
     &__container {
         @extend %flex_column;
+        align-items: center;
         gap: $gap_block_control_lg;
 
         text-align: center;
@@ -118,5 +104,20 @@
 
         inline-size: 192px;
         block-size: 192px;
+    }
+}
+
+.form {
+    display: grid;
+    gap: $gap_block_control_xlg;
+
+    @include respond_to(min, m_screen) {
+        grid-template-columns: repeat(2, 1fr);
+
+        & div:first-child,
+        & div:nth-last-child(2),
+        & button:last-child {
+            grid-column: span 2 / span 2;
+        }
     }
 }

@@ -4,9 +4,9 @@ import calculatorImg from '../../../assets/icon_calculator.svg'
 
 export default function ButtonRepayment() {
     return (
-        <button className={`${style.button_repayment}  text_preset_3  text_capitalize  text_slate--900`} type='button'>
-            <img className={style.button_repayment__image} src={calculatorImg} alt=''/>
+        <button className={`${style.button_repayment}  text_preset_3  text_capitalize  text_slate--900`} type='submit'>
+            <img className={style.button_repayment__image} src={calculatorImg} alt='' />
             calculate repayments
-            </button>
+        </button>
     )
 }

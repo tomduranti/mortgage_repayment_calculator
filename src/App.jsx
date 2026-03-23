@@ -1,3 +1,5 @@
+import { useForm } from 'react-hook-form';
+
 import ButtonRepayment from './components/atoms/Button/ButtonRepayment.jsx';
 import ButtonReset from './components/atoms/Button/ButtonReset.jsx';
 import Input from './components/atoms/Input/Input.jsx';
@@ -10,6 +12,11 @@ import './sass/base/_base.scss';
 
 export default function App() {
 
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  function onSubmitHandler(data) {
+    console.log(data);
+  }
+
   return (
     <main className='page_wrapper'>
       <div className='mortgage_repayment'>
@@ -19,13 +26,25 @@ export default function App() {
             <h1 className='mortgage_repayment__heading  text_preset_2  text_capitalize'>mortgage calculator</h1>
             <ButtonReset />
           </div>
-          <div className="mortgage_repayment__input_group">
-            <Input label_text={'mortgage amount'} prefix_text={'£'} dir={'r'} />
-            <Input label_text={'mortgage term'} prefix_text={'years'} />
-            <Input label_text={'interest rate'} prefix_text={'%'} />
+
+          <form onSubmit={handleSubmit(onSubmitHandler)} className="form">
+            <Input {...register('mortgage_amount')}
+              label_text={'mortgage amount'}
+              prefix_text={'£'}
+              dir={'r'} />
+            {errors.mortgage_amount && <span>{errors.mortgage_amount.message}</span>}
+            <Input {...register('mortgage_term', { valueAsNumber: true })}
+              label_text={'mortgage term'}
+              prefix_text={'years'} />
+            {errors.mortgage_term && <span>{errors.mortgage_term.message}</span>}
+            <Input {...register('interest_rate', { valueAsNumber: true })}
+              label_text={'interest rate'}
+              prefix_text={'%'} />
+            {errors.interest_rate && <span>{errors.interest_rate.message}</span>}
             <MortgageTypeRadio />
-          </div>
-          <ButtonRepayment />
+            <ButtonRepayment />
+          </form>
+
         </div>
 
         <div className='mortgage_repayment__result'>
