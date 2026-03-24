@@ -12,7 +12,7 @@ import './sass/base/_base.scss';
 
 export default function App() {
 
-  const { register, handleSubmit, control, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   function onSubmitHandler(data) {
     console.log(data);
   }
@@ -28,7 +28,7 @@ export default function App() {
           </div>
 
           <form onSubmit={handleSubmit(onSubmitHandler)} className="form">
-            <Input {...register('mortgage_amount')}
+            <Input {...register('mortgage_amount', { valueAsNumber: true })}
               label_text={'mortgage amount'}
               prefix_text={'£'}
               dir={'r'} />
