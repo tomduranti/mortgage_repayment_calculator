@@ -120,4 +120,9 @@
             grid-column: span 2 / span 2;
         }
     }
+
+    &__radio {
+        @extend %flex_column;
+        gap: $gap_block_control_md;
+    }
 }

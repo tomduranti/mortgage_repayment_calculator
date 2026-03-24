@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import ButtonRepayment from './components/atoms/Button/ButtonRepayment.jsx';
 import ButtonReset from './components/atoms/Button/ButtonReset.jsx';
 import Input from './components/atoms/Input/Input.jsx';
-import MortgageTypeRadio from './components/molecules/MortgageTypeRadio/RadioGroup.jsx';
+import Radio from './components/atoms/Radio/Radio.jsx';
 
 import EmptyIcon from './assets/illustration_empty.svg';
 
@@ -41,7 +41,11 @@ export default function App() {
               label_text={'interest rate'}
               prefix_text={'%'} />
             {errors.interest_rate && <span>{errors.interest_rate.message}</span>}
-            <MortgageTypeRadio control={control}/>
+            <div className='form__radio  text_slate--700'>
+                <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
+                <Radio {...register('mortgage_type')} htmlFor='repayment' id='repayment' text='repayment' value='repayment' />
+                <Radio {...register('mortgage_type')}  htmlFor='interest_only' id='interest_only' text='interest only' value='interest' />
+            </div>
             <ButtonRepayment />
           </form>
 

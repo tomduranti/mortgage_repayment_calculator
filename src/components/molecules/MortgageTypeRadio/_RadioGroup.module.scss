@@ -1,7 +1,0 @@
-@use '../../../sass/abstract/variables' as *;
-@use '../../../sass/abstract/utils' as *;
-
-.mortgage_type_radio {
-    @extend %flex_column;
-    gap: $gap_block_control_md;
-}
