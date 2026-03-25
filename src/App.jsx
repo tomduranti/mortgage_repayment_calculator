@@ -1,21 +1,27 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 import ButtonRepayment from './components/atoms/Button/ButtonRepayment.jsx';
 import ButtonReset from './components/atoms/Button/ButtonReset.jsx';
 import Input from './components/atoms/Input/Input.jsx';
 import Radio from './components/atoms/Radio/Radio.jsx';
-
 import EmptyIcon from './assets/illustration_empty.svg';
+import MortgageRepayment from './MortgageRepayment.js';
 
 import './sass/main.scss';
 import './sass/base/_base.scss';
 
 export default function App() {
 
+  const [monthlyRepayment, setMonthlyRepayment] = useState(0);
+  const [totalInterest, setTotalInterest] = useState(0);
+
   const { register, handleSubmit, formState: { errors } } = useForm();
-  function onSubmitHandler(data) {
-    console.log(data);
-  }
+
+  const {
+      setMortgageRepayment,
+      setNumberFormat,
+  } = MortgageRepayment({setMonthlyRepayment});
 
   return (
     <main className='page_wrapper'>
@@ -27,8 +33,9 @@ export default function App() {
             <ButtonReset />
           </div>
 
-          <form onSubmit={handleSubmit(onSubmitHandler)} className="form">
-            <Input {...register('mortgage_amount', { valueAsNumber: true })}
+          <form onSubmit={handleSubmit(setMortgageRepayment)} className="form">
+            <Input {...register('mortgage_amount')}
+              onInput={setNumberFormat}
               label_text={'mortgage amount'}
               prefix_text={'£'}
               dir={'r'} />
