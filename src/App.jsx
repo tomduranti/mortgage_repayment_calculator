@@ -13,20 +13,24 @@ import './sass/base/_base.scss';
 
 export default function App() {
 
-  const [mortgage, setMortgage] = useState({
+  const initialState = {
     repayment: 0,
     interest: 0,
     type: '',
-  });
+  }
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [mortgage, setMortgage] = useState(initialState);
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const {
     setMortgageRepayment,
     setNumberFormatInput,
     setNumberFormat,
+    resetState,
   } = MortgageRepayment({ setMortgage });
 
+  
   return (
     <main className='page_wrapper'>
       <div className='mortgage_repayment'>
@@ -34,7 +38,7 @@ export default function App() {
         <div className="mortgage_repayment__calculator">
           <div className='mortgage_repayment__title'>
             <h1 className='mortgage_repayment__heading  text_preset_2  text_capitalize'>mortgage calculator</h1>
-            <ButtonReset />
+            <ButtonReset onClick={() => {reset(), resetState(initialState)}}/>
           </div>
 
           <form onSubmit={handleSubmit(setMortgageRepayment)} className="form">
@@ -44,11 +48,11 @@ export default function App() {
               prefix_text={'£'}
               dir={'r'} />
             {errors.mortgage_amount && <span>{errors.mortgage_amount.message}</span>}
-            <Input {...register('mortgage_term', { valueAsNumber: true })}
+            <Input {...register('mortgage_term', { valueAsNumber: true, required: true })}
               label_text={'mortgage term'}
               prefix_text={'years'} />
             {errors.mortgage_term && <span>{errors.mortgage_term.message}</span>}
-            <Input {...register('interest_rate', { valueAsNumber: true })}
+            <Input {...register('interest_rate', { valueAsNumber: true, required: true })}
               label_text={'interest rate'}
               prefix_text={'%'} />
             {errors.interest_rate && <span>{errors.interest_rate.message}</span>}

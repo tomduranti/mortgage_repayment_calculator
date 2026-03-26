@@ -9,6 +9,7 @@ const MortgageRepayment = ({ setMortgage }) => {
 
         const totalRepayment = (stringToNumber(data.mortgage_amount) * monthlyInterestRate * power) / (power - 1)
 
+        console.log(data)
         return (
             setMortgage({
                 repayment: totalRepayment,
@@ -34,10 +35,16 @@ const MortgageRepayment = ({ setMortgage }) => {
         return Number(string).toLocaleString();
     }
 
+    function resetState(state) {
+        setMortgage(state);
+        window.location.reload(false);
+    }
+
     return {
         setMortgageRepayment,
         setNumberFormatInput,
         setNumberFormat,
+        resetState,
     }
 }
 
