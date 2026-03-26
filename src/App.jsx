@@ -13,15 +13,17 @@ import './sass/base/_base.scss';
 
 export default function App() {
 
-  const [monthlyRepayment, setMonthlyRepayment] = useState(0);
-  const [totalInterest, setTotalInterest] = useState(0);
+  const [mortgage, setMortgage] = useState({
+    repayment: 0,
+    interest: 0,
+  });
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const {
       setMortgageRepayment,
       setNumberFormat,
-  } = MortgageRepayment({setMonthlyRepayment});
+  } = MortgageRepayment({setMortgage});
 
   return (
     <main className='page_wrapper'>
@@ -64,8 +66,12 @@ export default function App() {
             <h3 className='text_white  text_preset_2'>Results shown here</h3>
             <p className='text_slate--300  text_preset_4'>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
           </div>
-        </div>
 
+          {<div className='text_white'>{mortgage.repayment.toFixed(2)}</div>} 
+          {<div className='text_white'>{mortgage.interest.toFixed(2)}</div>}
+
+        </div>
+      
       </div>
     </main>
   )
