@@ -1,6 +1,6 @@
 
 
-const MortgageRepayment = ({setMortgage}) => {
+const MortgageRepayment = ({ setMortgage }) => {
 
     function setMortgageRepayment(data) {
         const totalMonths = data.mortgage_term * 12;
@@ -13,6 +13,7 @@ const MortgageRepayment = ({setMortgage}) => {
             setMortgage({
                 repayment: totalRepayment,
                 interest: (totalRepayment * totalMonths) - stringToNumber(data.mortgage_amount),
+                type: data.mortgage_type,
             })
         )
     }
@@ -25,13 +26,17 @@ const MortgageRepayment = ({setMortgage}) => {
         return number / 100;
     }
 
-    function setNumberFormat(e) {
-        const newNumber = Number(e.target.value.replaceAll(',', ''));
-        return e.target.value = newNumber.toLocaleString();
+    function setNumberFormatInput(e) {
+        return e.target.value = Number(e.target.value.replaceAll(',', '')).toLocaleString();
+    }
+
+    function setNumberFormat(string) {
+        return Number(string).toLocaleString();
     }
 
     return {
         setMortgageRepayment,
+        setNumberFormatInput,
         setNumberFormat,
     }
 }

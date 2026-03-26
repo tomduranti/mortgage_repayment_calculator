@@ -16,14 +16,16 @@ export default function App() {
   const [mortgage, setMortgage] = useState({
     repayment: 0,
     interest: 0,
+    type: '',
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const {
-      setMortgageRepayment,
-      setNumberFormat,
-  } = MortgageRepayment({setMortgage});
+    setMortgageRepayment,
+    setNumberFormatInput,
+    setNumberFormat,
+  } = MortgageRepayment({ setMortgage });
 
   return (
     <main className='page_wrapper'>
@@ -37,7 +39,7 @@ export default function App() {
 
           <form onSubmit={handleSubmit(setMortgageRepayment)} className="form">
             <Input {...register('mortgage_amount')}
-              onInput={setNumberFormat}
+              onInput={setNumberFormatInput}
               label_text={'mortgage amount'}
               prefix_text={'£'}
               dir={'r'} />
@@ -51,9 +53,9 @@ export default function App() {
               prefix_text={'%'} />
             {errors.interest_rate && <span>{errors.interest_rate.message}</span>}
             <div className='form__radio  text_slate--700'>
-                <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
-                <Radio {...register('mortgage_type')} htmlFor='repayment' id='repayment' text='repayment' value='repayment' />
-                <Radio {...register('mortgage_type')}  htmlFor='interest_only' id='interest_only' text='interest only' value='interest' />
+              <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
+              <Radio {...register('mortgage_type')} htmlFor='repayment' id='repayment' text='repayment' value='repayment' />
+              <Radio {...register('mortgage_type')} htmlFor='interest_only' id='interest_only' text='interest only' value='interest' />
             </div>
             <ButtonRepayment />
           </form>
@@ -62,16 +64,33 @@ export default function App() {
 
         <div className='mortgage_repayment__result'>
           <div className="mortgage_repayment__container">
-            <img className='mortgage_repayment__icon' src={EmptyIcon} alt='' />
-            <h3 className='text_white  text_preset_2'>Results shown here</h3>
-            <p className='text_slate--300  text_preset_4'>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+            {mortgage.repayment ?
+              (
+                mortgage.type === 'repayment' ?
+                  (
+                    <div>
+                      <div className='text_white'>Your monthly repayments {setNumberFormat(mortgage.repayment.toFixed(2))}</div>
+                      <div className='text_white'>Total you'll repay over the term{setNumberFormat((mortgage.interest + mortgage.repayment).toFixed(2))}</div>
+                    </div>
+                  ) :
+                  ( 
+                    <span className='text_white'>show just the interest you pay</span>
+                  )
+                
+              ) : (
+                <>
+                  <img className='mortgage_repayment__icon' src={EmptyIcon} alt='' />
+                  <h3 className='text_white  text_preset_2'>Results shown here</h3>
+                  <p className='text_slate--300  text_preset_4'>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+                </>
+              )
+            }
+
           </div>
 
-          {<div className='text_white'>{mortgage.repayment.toFixed(2)}</div>} 
-          {<div className='text_white'>{mortgage.interest.toFixed(2)}</div>}
 
         </div>
-      
+
       </div>
     </main>
   )
