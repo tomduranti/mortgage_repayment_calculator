@@ -25,6 +25,10 @@
     text-decoration: underline;
 }
 
+.text_center {
+    text-align: center;
+}
+
 .text_slate--900 {
     color: $slate--900;
 }
@@ -35,6 +39,10 @@
 
 .text_slate--300 {
     color: $slate--300;
+}
+
+.text_lime {
+    color: $lime;
 }
 
 .text_white {

@@ -44,7 +44,7 @@
         padding: $padding_block_component_md $padding_inline_component_md;
 
         @include respond_to(min, m_screen) {
-            gap: $gap_block_control_xxlg;
+            gap: $gap_block_control_xxxlg;
 
             padding: $padding_full_component_lg;
         }
@@ -88,14 +88,26 @@
 
     &__container {
         @extend %flex_column;
-        align-items: center;
+        justify-self: center;
         gap: $gap_block_control_lg;
 
-        text-align: center;
+        @include respond_to(min, m_screen) {
+            gap: $gap_block_control_xxxlg;
+        }
+
+        inline-size: 100%;
+        max-inline-size: 100%;
+
+        text-align: left;
 
         & > p {
             max-inline-size: 45ch; //char limitation just to match design
         }
+    }
+
+
+    &__heading {
+        margin-block-end: $margin_blockend_component_lg;
     }
 
 
@@ -106,6 +118,7 @@
         block-size: 192px;
     }
 }
+
 
 .form {
     display: grid;
@@ -125,4 +138,35 @@
         @extend %flex_column;
         gap: $gap_block_control_md;
     }
+}
+
+
+.inbox {
+    @extend %flex_column;
+    gap: $gap_block_control_lg;
+
+    background-color: $background_color_black;
+
+    border-radius: $radius_pill_sm;
+    border-top: 4px solid $border_lime;
+
+    inline-size: 100%;
+
+    padding: $padding_block_control_xlg $padding_inline_control_lg;
+
+    @include respond_to(min, m_screen) {
+        padding: $padding_full_component_md;
+        gap: $gap_block_control_xxlg;
+    }
+
+    &__details {
+        @extend %flex_column;
+        gap: $gap_block_control_sm;
+    }
+
+}
+
+
+.separator {
+    border-bottom: 1px solid $border_slate--opaque;
 }

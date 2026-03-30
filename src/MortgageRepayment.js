@@ -13,7 +13,8 @@ const MortgageRepayment = ({ setMortgage }) => {
         return (
             setMortgage({
                 repayment: totalRepayment,
-                interest: (totalRepayment * totalMonths) - stringToNumber(data.mortgage_amount),
+                total_interest: (totalRepayment * totalMonths) - stringToNumber(data.mortgage_amount),
+                monthly_interest: stringToNumber(data.mortgage_amount) * monthlyInterestRate,
                 type: data.mortgage_type,
             })
         )
