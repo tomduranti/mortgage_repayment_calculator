@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useState } from 'react';
 
 import ButtonRepayment from './components/atoms/Button/ButtonRepayment.jsx';
@@ -15,6 +15,7 @@ export default function App() {
 
   const initialState = {
     repayment: 0,
+    total_repayment: 0,
     total_interest: 0,
     monthly_interest: 0,
     type: '',
@@ -22,7 +23,7 @@ export default function App() {
 
   const [mortgage, setMortgage] = useState(initialState);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, control, formState: { errors } } = useForm();
 
   const {
     setMortgageRepayment,
@@ -43,41 +44,64 @@ export default function App() {
           </div>
 
           <form onSubmit={handleSubmit(setMortgageRepayment)} className="form" noValidate>
+
             <div>
-              <Input {...register('mortgage_amount', {
-                required: 'This field is required'
-              })}
-                onInput={setNumberFormatInput}
-                label_text={'mortgage amount'}
-                prefix_text={'£'}
-                dir={'r'}
-                error={Boolean(errors.mortgage_amount)}
-                />
+              <Controller
+                name="mortgage_amount"
+                control={control}
+                rules={{ required: 'This field is required' }}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label_text={'mortgage amount'}
+                    prefix_text={'£'}
+                    dir={'r'}
+                    error={errors.mortgage_amount}
+                  />
+                )}
+              />
               <span className='error  text_preset_5  text_red'>{errors.mortgage_amount?.message}</span>
             </div>
+
             <div>
-              <Input {...register('mortgage_term', {
-                valueAsNumber: true,
-                required: 'This field is required'
-              })}
-                label_text={'mortgage term'}
-                prefix_text={'years'} />
+              <Controller
+                name="mortgage_term"
+                control={control}
+                rules={{ required: 'This field is required' }}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label_text={'mortgage term'}
+                    prefix_text={'years'}
+                    error={errors.mortgage_term}
+                  />
+                )}
+              />
               <span className='error  text_preset_5  text_red'>{errors.mortgage_term?.message}</span>
             </div>
+
             <div>
-              <Input {...register('interest_rate', {
-                valueAsNumber: true,
-                required: 'This field is required'
-              })}
-                label_text={'interest rate'}
-                prefix_text={'%'} />
+              <Controller
+                name="interest_rate"
+                control={control}
+                rules={{ required: 'This field is required' }}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label_text={'interest rate'}
+                    prefix_text={'%'}
+                    error={errors.interest_rate}
+                  />
+                )}
+              />
               <span className='error  text_preset_5  text_red'>{errors.interest_rate?.message}</span>
             </div>
+
             <div className='form__radio  text_slate--700'>
               <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
               <Radio {...register('mortgage_type', {
                 required: 'This field is required'
-                })}
+              })}
                 htmlFor='repayment'
                 id='repayment'
                 text='repayment'
@@ -89,9 +113,11 @@ export default function App() {
                 text='interest only'
                 value='interest'
               />
-              {errors.mortgage_type && <span className='text_preset_5  text_red'>{errors.mortgage_type.message}</span>}
+              <span className='text_preset_5  text_red'>{errors.mortgage_type?.message}</span>
             </div>
+
             <ButtonRepayment />
+
           </form>
 
         </div>
@@ -122,7 +148,7 @@ export default function App() {
                     <span className='separator'></span>
                     <div className='inbox__details'>
                       <h4 className='text_preset_4  text_slate--300'>Total you'll repay over the term</h4>
-                      <span className='text_preset_2  text_white'>£{setNumberFormat((mortgage.total_interest + mortgage.repayment).toFixed(2))}</span>
+                      <span className='text_preset_2  text_white'>£{setNumberFormat((mortgage.total_repayment))}</span>
                     </div>
                   </div>
                 </>

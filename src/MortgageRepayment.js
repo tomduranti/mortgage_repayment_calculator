@@ -7,14 +7,15 @@ const MortgageRepayment = ({ setMortgage }) => {
         const monthlyInterestRate = percentageToNumber(data.interest_rate) / 12;
         const power = Math.pow((1 + monthlyInterestRate), totalMonths);
 
-        const totalRepayment = (stringToNumber(data.mortgage_amount) * monthlyInterestRate * power) / (power - 1)
+        const monthlyRepayment = ((data.mortgage_amount) * monthlyInterestRate * power) / (power - 1)
 
         console.log(data)
         return (
             setMortgage({
-                repayment: totalRepayment,
-                total_interest: (totalRepayment * totalMonths) - stringToNumber(data.mortgage_amount),
-                monthly_interest: stringToNumber(data.mortgage_amount) * monthlyInterestRate,
+                repayment: monthlyRepayment,
+                total_repayment: monthlyRepayment * totalMonths,
+                total_interest: (monthlyRepayment * totalMonths) - (data.mortgage_amount),
+                monthly_interest: (data.mortgage_amount) * monthlyInterestRate,
                 type: data.mortgage_type,
             })
         )
