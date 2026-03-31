@@ -8,7 +8,7 @@ export default function Radio({ htmlFor, id, text, ...inputProp }) {
                 {...inputProp}
                 type='radio'
                 id={id}
-                required />
+                />
             {text}
         </label>
     )

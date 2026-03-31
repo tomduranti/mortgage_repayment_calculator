@@ -99,7 +99,8 @@ $margin_inlinestart_component_lg: map.get($spacing, 16);
 $margin_inlineend_component_md: map.get($spacing, 12);
 
 // $margin_block_component_xs: map.get($spacing, 16);
-// $margin_block_component_sm: map.get($spacing, 24);
+$margin_blockstart_control_sm: map.get($spacing, 12);
+$margin_blockstart_control_md: map.get($spacing, 16);
 // $margin_block_component_md: calc(map.get($spacing, 32) + map.get($spacing, 4) + map.get($special_spacing, 2));
 
 $margin_blockend_component_sm: map.get($spacing, 8);

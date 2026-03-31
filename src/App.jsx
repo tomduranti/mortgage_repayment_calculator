@@ -42,25 +42,53 @@ export default function App() {
             <ButtonReset onClick={() => resetState(initialState)} />
           </div>
 
-          <form onSubmit={handleSubmit(setMortgageRepayment)} className="form">
-            <Input {...register('mortgage_amount')}
-              onInput={setNumberFormatInput}
-              label_text={'mortgage amount'}
-              prefix_text={'£'}
-              dir={'r'} />
-            {/* {errors.mortgage_amount && <span>{errors.mortgage_amount.message}</span>} */}
-            <Input {...register('mortgage_term', { valueAsNumber: true, required: true })}
-              label_text={'mortgage term'}
-              prefix_text={'years'} />
-            {/* {errors.mortgage_term && <span>{errors.mortgage_term.message}</span>} */}
-            <Input {...register('interest_rate', { valueAsNumber: true, required: true })}
-              label_text={'interest rate'}
-              prefix_text={'%'} />
-            {/* {errors.interest_rate && <span>{errors.interest_rate.message}</span>} */}
+          <form onSubmit={handleSubmit(setMortgageRepayment)} className="form" noValidate>
+            <div>
+              <Input {...register('mortgage_amount', {
+                required: 'This field is required'
+              })}
+                onInput={setNumberFormatInput}
+                label_text={'mortgage amount'}
+                prefix_text={'£'}
+                dir={'r'}
+                />
+              <span className='error  text_preset_5  text_red'>{errors.mortgage_amount?.message}</span>
+            </div>
+            <div>
+              <Input {...register('mortgage_term', {
+                valueAsNumber: true,
+                required: 'This field is required'
+              })}
+                label_text={'mortgage term'}
+                prefix_text={'years'} />
+              <span className='error  text_preset_5  text_red'>{errors.mortgage_term?.message}</span>
+            </div>
+            <div>
+              <Input {...register('interest_rate', {
+                valueAsNumber: true,
+                required: 'This field is required'
+              })}
+                label_text={'interest rate'}
+                prefix_text={'%'} />
+              <span className='error  text_preset_5  text_red'>{errors.interest_rate?.message}</span>
+            </div>
             <div className='form__radio  text_slate--700'>
               <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
-              <Radio {...register('mortgage_type')} htmlFor='repayment' id='repayment' text='repayment' value='repayment' />
-              <Radio {...register('mortgage_type')} htmlFor='interest_only' id='interest_only' text='interest only' value='interest' />
+              <Radio {...register('mortgage_type', {
+                required: 'This field is required'
+                })}
+                htmlFor='repayment'
+                id='repayment'
+                text='repayment'
+                value='repayment'
+              />
+              <Radio {...register('mortgage_type')}
+                htmlFor='interest_only'
+                id='interest_only'
+                text='interest only'
+                value='interest'
+              />
+              {errors.mortgage_type && <span className='text_preset_5  text_red'>{errors.mortgage_type.message}</span>}
             </div>
             <ButtonRepayment />
           </form>
@@ -107,7 +135,6 @@ export default function App() {
             }
 
           </div>
-
 
         </div>
 

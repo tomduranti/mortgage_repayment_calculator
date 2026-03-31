@@ -23,6 +23,8 @@
     }
 
     @include respond_to(min, m_screen) {
+        margin-block-start: $margin_blockstart_control_md;
+        
         max-inline-size: $inlinesize_control_sm;
     }
 }

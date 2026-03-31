@@ -170,3 +170,9 @@
 .separator {
     border-bottom: 1px solid $border_slate--opaque;
 }
+
+
+.error {
+    display: inline-block;
+    margin-block-start: $margin_blockstart_control_sm;
+}
