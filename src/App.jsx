@@ -51,6 +51,7 @@ export default function App() {
                 label_text={'mortgage amount'}
                 prefix_text={'£'}
                 dir={'r'}
+                error={Boolean(errors.mortgage_amount)}
                 />
               <span className='error  text_preset_5  text_red'>{errors.mortgage_amount?.message}</span>
             </div>
