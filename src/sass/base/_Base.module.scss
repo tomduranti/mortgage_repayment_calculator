@@ -3,6 +3,7 @@
 @use '../abstract/utils' as *;
 
 .page_wrapper {
+
     //the following code is to display the app as fully centered
     @include respond_to(min, m_screen) {
         display: grid;
@@ -54,7 +55,7 @@
             max-inline-size: $inlinesize_layout_xlg;
         }
     }
-    
+
 
     &__title {
         @extend %flex_column;
@@ -100,7 +101,7 @@
 
         text-align: left;
 
-        & > p {
+        &>p {
             max-inline-size: 45ch; //char limitation just to match mobile design
 
             @include respond_to(min, m_screen) {
