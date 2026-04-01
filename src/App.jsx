@@ -37,17 +37,17 @@ export default function App() {
     <main className='page_wrapper'>
       <div className='mortgage_repayment'>
 
-        <div className="mortgage_repayment__calculator">
+        <div className='mortgage_repayment__calculator'>
           <div className='mortgage_repayment__title'>
             <h1 className='text_preset_2  text_capitalize'>mortgage calculator</h1>
             <ButtonReset onClick={() => resetState(initialState)} />
           </div>
 
-          <form onSubmit={handleSubmit(setMortgageRepayment)} className="form" noValidate>
+          <form onSubmit={handleSubmit(setMortgageRepayment)} className='form' noValidate>
 
             <div>
               <Controller
-                name="mortgage_amount"
+                name='mortgage_amount'
                 control={control}
                 rules={{ required: 'This field is required' }}
                 render={({ field }) => (
@@ -56,7 +56,7 @@ export default function App() {
                     label_text={'mortgage amount'}
                     prefix_text={'£'}
                     dir={'r'}
-                    error={errors.mortgage_amount}
+                    error={errors.mortgage_amount && true}
                   />
                 )}
               />
@@ -65,7 +65,7 @@ export default function App() {
 
             <div>
               <Controller
-                name="mortgage_term"
+                name='mortgage_term'
                 control={control}
                 rules={{ required: 'This field is required' }}
                 render={({ field }) => (
@@ -73,7 +73,7 @@ export default function App() {
                     {...field}
                     label_text={'mortgage term'}
                     prefix_text={'years'}
-                    error={errors.mortgage_term}
+                    error={errors.mortgage_term && true}
                   />
                 )}
               />
@@ -82,7 +82,7 @@ export default function App() {
 
             <div>
               <Controller
-                name="interest_rate"
+                name='interest_rate'
                 control={control}
                 rules={{ required: 'This field is required' }}
                 render={({ field }) => (
@@ -90,7 +90,7 @@ export default function App() {
                     {...field}
                     label_text={'interest rate'}
                     prefix_text={'%'}
-                    error={errors.interest_rate}
+                    error={errors.interest_rate && true}
                   />
                 )}
               />
@@ -123,7 +123,7 @@ export default function App() {
         </div>
 
         <div className='mortgage_repayment__result'>
-          <div className="mortgage_repayment__container">
+          <div className='mortgage_repayment__container'>
             {mortgage.repayment ?
               (
                 <>
@@ -131,7 +131,7 @@ export default function App() {
                     <h3 className='mortgage_repayment__heading  text_white  text_preset_2'>Your results</h3>
                     <p className='text_slate--300  text_preset_4'>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again.</p>
                   </div>
-                  <div className="inbox">
+                  <div className='inbox'>
 
                     {mortgage.type === 'repayment' ? (
                       <div className='inbox__details'>
@@ -141,14 +141,14 @@ export default function App() {
                     ) : (
                       <div className='inbox__details'>
                         <h4 className='text_preset_4  text_slate--300'>Your monthly interest</h4>
-                        <span className='text_preset_1  text_lime'>£{setNumberFormat((mortgage.monthly_interest).toFixed(2))}</span>
+                        <span className='text_preset_1  text_lime'>£{setNumberFormat(mortgage.monthly_interest.toFixed(2))}</span>
                       </div>
                     )}
 
                     <span className='separator'></span>
                     <div className='inbox__details'>
                       <h4 className='text_preset_4  text_slate--300'>Total you'll repay over the term</h4>
-                      <span className='text_preset_2  text_white'>£{setNumberFormat((mortgage.total_repayment))}</span>
+                      <span className='text_preset_2  text_white'>£{setNumberFormat(mortgage.total_repayment.toFixed(2))}</span>
                     </div>
                   </div>
                 </>

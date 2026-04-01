@@ -101,7 +101,11 @@
         text-align: left;
 
         & > p {
-            max-inline-size: 45ch; //char limitation just to match design
+            max-inline-size: 45ch; //char limitation just to match mobile design
+
+            @include respond_to(min, m_screen) {
+                max-inline-size: 100%;
+            }
         }
     }
 
