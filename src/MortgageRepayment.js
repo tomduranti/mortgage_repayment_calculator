@@ -1,6 +1,6 @@
 
 
-const MortgageRepayment = ({ setMortgage }) => {
+const MortgageRepayment = ({ setMortgage, initialState }) => {
 
     function setMortgageRepayment(data) {
         const totalMonths = data.mortgage_term * 12;
@@ -9,7 +9,6 @@ const MortgageRepayment = ({ setMortgage }) => {
 
         const monthlyRepayment = ((data.mortgage_amount) * monthlyInterestRate * power) / (power - 1)
 
-        console.log(data)
         return (
             setMortgage({
                 repayment: monthlyRepayment,
@@ -21,30 +20,21 @@ const MortgageRepayment = ({ setMortgage }) => {
         )
     }
 
-    function stringToNumber(string) {
-        return parseFloat(string.replaceAll(',', ''));
-    }
-
     function percentageToNumber(number) {
         return number / 100;
-    }
-
-    function setNumberFormatInput(e) {
-        return e.target.value = Number(e.target.value.replaceAll(',', '')).toLocaleString();
     }
 
     function setNumberFormat(string) {
         return Number(string).toLocaleString();
     }
 
-    function resetState(state) {
-        setMortgage(state);
-        window.location.reload(false);
+    function resetState() {
+        localStorage.removeItem('mortgageData');
+        setMortgage(initialState);  
     }
 
     return {
         setMortgageRepayment,
-        setNumberFormatInput,
         setNumberFormat,
         resetState,
     }

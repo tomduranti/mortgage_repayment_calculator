@@ -21,7 +21,7 @@
     &:has(:required:valid) {
         outline-color: $border_lime;
 
-        .input_number__prefix {
+        .input_number__prefix--bg_lime {
             background-color: $background_color_lime;
 
             color: $slate--900;
@@ -46,6 +46,7 @@
 
             color: $white;
         }
+        
     }
 
 

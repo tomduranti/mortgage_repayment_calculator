@@ -27,10 +27,9 @@ export default function App() {
 
   const {
     setMortgageRepayment,
-    setNumberFormatInput,
     setNumberFormat,
     resetState,
-  } = MortgageRepayment({ setMortgage });
+  } = MortgageRepayment({ setMortgage, initialState });
 
 
   return (
@@ -43,78 +42,75 @@ export default function App() {
             <ButtonReset onClick={() => resetState(initialState)} />
           </div>
 
-          <form onSubmit={handleSubmit(setMortgageRepayment)} className={`${styles.form}`} noValidate>
+          <form onSubmit={handleSubmit(setMortgageRepayment)} noValidate>
 
-            <div>
-              <Controller
-                name='mortgage_amount'
-                control={control}
-                rules={{ required: 'This field is required' }}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    label_text={'mortgage amount'}
-                    prefix_text={'£'}
-                    dir={'r'}
-                    error={errors.mortgage_amount && true}
-                  />
-                )}
-              />
-              <span className={`${styles.error} text_preset_5  text_red`}>{errors.mortgage_amount?.message}</span>
-            </div>
-
-            <div>
-              <Controller
-                name='mortgage_term'
-                control={control}
-                rules={{ required: 'This field is required' }}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    label_text={'mortgage term'}
-                    prefix_text={'years'}
-                    error={errors.mortgage_term && true}
-                  />
-                )}
-              />
-              <span className={`${styles.error} text_preset_5  text_red`}>{errors.mortgage_term?.message}</span>
-            </div>
-
-            <div>
-              <Controller
-                name='interest_rate'
-                control={control}
-                rules={{ required: 'This field is required' }}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    label_text={'interest rate'}
-                    prefix_text={'%'}
-                    error={errors.interest_rate && true}
-                  />
-                )}
-              />
-              <span className={`${styles.error} text_preset_5  text_red`}>{errors.interest_rate?.message}</span>
-            </div>
-
-            <div className={`${styles.form__radio}  text_slate--700`}>
-              <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
-              <Radio {...register('mortgage_type', {
-                required: 'This field is required'
-              })}
-                htmlFor='repayment'
-                id='repayment'
-                text='repayment'
-                value='repayment'
-              />
-              <Radio {...register('mortgage_type')}
-                htmlFor='interest_only'
-                id='interest_only'
-                text='interest only'
-                value='interest'
-              />
-              <span className='text_preset_5  text_red'>{errors.mortgage_type?.message}</span>
-            </div>
+            <fieldset className={`${styles.form}`}>
+              <div>
+                <Controller
+                  name='mortgage_amount'
+                  control={control}
+                  rules={{ required: 'This field is required' }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      label_text={'mortgage amount'}
+                      prefix_text={'£'}
+                      dir={'r'}
+                      error={errors.mortgage_amount && true}
+                    />
+                  )}
+                />
+                {errors.mortgage_amount && <span className={`${styles.error} text_preset_5  text_red`}>{errors.mortgage_amount?.message}</span>}
+              </div>
+              <div>
+                <Controller
+                  name='mortgage_term'
+                  control={control}
+                  rules={{ required: 'This field is required' }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      label_text={'mortgage term'}
+                      prefix_text={'years'}
+                      error={errors.mortgage_term && true}
+                    />
+                  )}
+                />
+                {errors.mortgage_term && <span className={`${styles.error} text_preset_5  text_red`}>{errors.mortgage_term?.message}</span>}
+              </div>
+              <div>
+                <Controller
+                  name='interest_rate'
+                  control={control}
+                  rules={{ required: 'This field is required' }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      label_text={'interest rate'}
+                      prefix_text={'%'}
+                      error={errors.interest_rate && true}
+                    />
+                  )}
+                />
+                {errors.interest_rate && <span className={`${styles.error} text_preset_5  text_red`}>{errors.interest_rate?.message}</span>}
+              </div>
+              <div className={`${styles.form__radio}  text_slate--700`}>
+                <h2 className='text_preset_4  text_capitalize'>mortgage type</h2>
+                <Radio {...register('mortgage_type', {
+                  required: 'This field is required'
+                })}
+                  id='repayment'
+                  text='repayment'
+                  value='repayment'
+                />
+                <Radio {...register('mortgage_type')}
+                  id='interest_only'
+                  text='interest only'
+                  value='interest'
+                />
+                {errors.mortgage_type && <span className='text_preset_5  text_red'>{errors.mortgage_type?.message}</span>}
+              </div>
+            </fieldset>
 
             <ButtonRepayment />
 
@@ -147,7 +143,7 @@ export default function App() {
 
                     <span className='separator'></span>
                     <div className={`${styles.inbox__details}`}>
-                      <h4 className='text_preset_4  text_slate--300'>Total you'll repay over the term</h4>
+                      <h4 className='text_preset_4  text_slate--300'>Total you&apos;ll repay over the term</h4>
                       <span className='text_preset_2  text_white'>£{setNumberFormat(mortgage.total_repayment.toFixed(2))}</span>
                     </div>
                   </div>

@@ -90,7 +90,7 @@
     &__container {
         @extend %flex_column;
         justify-self: center;
-        gap: $gap_block_control_lg;
+        gap: $gap_block_control_xlg;
 
         @include respond_to(min, m_screen) {
             gap: $gap_block_control_xxxlg;
@@ -129,11 +129,15 @@
     display: grid;
     gap: $gap_block_control_xlg;
 
+    margin-block-end: $margin_blockend_component_xlg;
+
     @include respond_to(min, m_screen) {
         grid-template-columns: repeat(2, 1fr);
 
+        margin-block-end: $margin_blockend_component_xxlg;
+
         & div:first-child,
-        & div:nth-last-child(2),
+        & div:last-child,
         & button:last-child {
             grid-column: span 2 / span 2;
         }
@@ -167,8 +171,8 @@
     &__details {
         @extend %flex_column;
         gap: $gap_block_control_sm;
-    }
 
+    }
 }
 
 

@@ -57,7 +57,7 @@
             block-size: 10.5px;
             
             transform: scale(0);
-            transition: .1s transform ease-in-out;
+            @include transition(transform, .1s, ease-in-out);
         }
 
         &:checked::before {
