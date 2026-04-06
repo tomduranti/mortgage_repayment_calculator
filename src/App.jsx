@@ -23,12 +23,11 @@ export default function App() {
 
   const [mortgage, setMortgage] = useState(initialState);
 
-  const { register, handleSubmit, control, formState: { errors } } = useForm();
+  const { register, handleSubmit, control, reset, formState: { errors } } = useForm();
 
   const {
     setMortgageRepayment,
     setNumberFormat,
-    resetState,
   } = MortgageRepayment({ setMortgage, initialState });
 
 
@@ -38,13 +37,14 @@ export default function App() {
 
         <div className={`${styles.mortgage_repayment__calculator}`}>
           <div className={`${styles.mortgage_repayment__title}`}>
-            <h1 className='text_preset_2  text_capitalize'>mortgage calculator</h1>
-            <ButtonReset onClick={() => resetState(initialState)} />
+            <h1 className='text_preset_2  text_capitalize  text_slate--900'>mortgage calculator</h1>
+            <ButtonReset onClick={() => { reset({}, { keepErrors: false }), setMortgage(initialState) }} />
           </div>
 
           <form onSubmit={handleSubmit(setMortgageRepayment)} noValidate>
 
             <fieldset className={`${styles.form}`}>
+              <legend className='hidden'>mortgage details</legend>
               <div>
                 <Controller
                   name='mortgage_amount'

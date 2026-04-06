@@ -1,13 +1,18 @@
 
 
-const MortgageRepayment = ({ setMortgage, initialState }) => {
+const MortgageRepayment = ({ setMortgage }) => {
 
     function setMortgageRepayment(data) {
         const totalMonths = data.mortgage_term * 12;
         const monthlyInterestRate = percentageToNumber(data.interest_rate) / 12;
         const power = Math.pow((1 + monthlyInterestRate), totalMonths);
 
-        const monthlyRepayment = ((data.mortgage_amount) * monthlyInterestRate * power) / (power - 1)
+        let monthlyRepayment = 0;
+
+        data.interest_rate > 0 ?
+        monthlyRepayment = ((data.mortgage_amount) * monthlyInterestRate * power) / (power - 1) :
+        monthlyRepayment = data.mortgage_amount / totalMonths; //if there is no interest
+
 
         return (
             setMortgage({
@@ -28,15 +33,9 @@ const MortgageRepayment = ({ setMortgage, initialState }) => {
         return Number(string).toLocaleString();
     }
 
-    function resetState() {
-        localStorage.removeItem('mortgageData');
-        setMortgage(initialState);  
-    }
-
     return {
         setMortgageRepayment,
         setNumberFormat,
-        resetState,
     }
 }
 

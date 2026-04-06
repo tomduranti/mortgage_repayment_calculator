@@ -34,7 +34,7 @@
         }
     }
 
-    @else if $media ==s_screen {
+    @else if $media == s_screen {
         @media screen and (#{$minmax}-width: func.to_rem(375)) {
             @content;
         }

@@ -20,6 +20,8 @@
 
     overflow: hidden;
 
+    box-shadow: 0 32px 64px $slate--shadow;
+
     @include respond_to(min, m_screen) {
         background-color: $background_color_white;
 
@@ -89,12 +91,9 @@
 
     &__container {
         @extend %flex_column;
+        align-self: center;
         justify-self: center;
-        gap: $gap_block_control_xlg;
-
-        @include respond_to(min, m_screen) {
-            gap: $gap_block_control_xxxlg;
-        }
+        gap: $gap_block_control_lg;
 
         inline-size: 100%;
         max-inline-size: 100%;
@@ -103,10 +102,6 @@
 
         &>p {
             max-inline-size: 45ch; //char limitation just to match mobile design
-
-            @include respond_to(min, m_screen) {
-                max-inline-size: 100%;
-            }
         }
     }
 
@@ -136,9 +131,8 @@
 
         margin-block-end: $margin_blockend_component_xxlg;
 
-        & div:first-child,
-        & div:last-child,
-        & button:last-child {
+        & div:nth-child(2),
+        & div:last-child {
             grid-column: span 2 / span 2;
         }
     }
