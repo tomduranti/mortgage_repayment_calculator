@@ -4,6 +4,10 @@
 
 App that calculates mortgage repayment over a period of time given a fixed interest.
 
+> [!WARNING]
+> **This repository is no longer actively maintained.**
+> It is kept here for historical/archival purposes. Feel free to fork it, but please note that pull requests and issues will likely not be reviewed.
+
 ### Screenshot
 
 ![](./_resources/mortgage_repayment_calculator_demo.gif)
